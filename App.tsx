@@ -1,6 +1,7 @@
 import React from 'react';
 import { Nunito_600SemiBold, Nunito_700Bold, Nunito_800ExtraBold, useFonts } from '@expo-google-fonts/nunito'
 import Routes from './src/routes';
+import { UserProvider } from './src/contexts/user';
 
 export default function App() {
   const [fontsLoaded] = useFonts({
@@ -13,6 +14,8 @@ export default function App() {
   }
 
   return (
-    <Routes />
+    <UserProvider>
+      <Routes />
+    </UserProvider>
   );
 }
