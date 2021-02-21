@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { RectButton } from 'react-native-gesture-handler';
 import { SafeAreaView, StyleSheet, TextInput, Text, View } from 'react-native';
+import { RectButton } from 'react-native-gesture-handler';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Login() {
+  const navigation = useNavigation()
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [eyeIcon, setEyeIcon] = useState("visibility-off");
@@ -13,6 +15,10 @@ export default function Login() {
     setEyeIcon(isPassword ? "visibility" : "visibility-off");
     setIsPassword((prevState: boolean) => !prevState);
   };
+
+  const navigateToRegister = () => {
+    navigation.navigate('Register');
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -38,7 +44,7 @@ export default function Login() {
       </View>
 
       <View style={styles.registerContainer}>
-        <Text style={styles.registerText}>
+        <Text onPress={navigateToRegister} style={styles.registerText}>
           Novo aqui? Cadastre-se
         </Text>
       </View>
